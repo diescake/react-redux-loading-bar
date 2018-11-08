@@ -90,14 +90,16 @@ var LoadingBar = function (_Component) {
   }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate(prevProps, prevState) {
-      if (prevState.status !== this.state.status) {
-        if (this.state.status === 'starting') {
-          this.start();
-        }
+      if (prevState.status === this.state.status) {
+        return;
+      }
 
-        if (this.state.status === 'stopping') {
-          this.stop();
-        }
+      if (this.state.status === 'starting') {
+        this.start();
+      }
+
+      if (this.state.status === 'stopping') {
+        this.stop();
       }
     }
   }, {
