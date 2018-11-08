@@ -109,6 +109,11 @@ var LoadingBar = function (_Component) {
   }, {
     key: 'start',
     value: function start() {
+      if (this.progressIntervalId) {
+        clearInterval(this.progressIntervalId);
+        this.progressIntervalId = null;
+      }
+
       this.progressIntervalId = setInterval(this.simulateProgress, this.props.updateTime);
       this.setState({ status: 'running' });
     }
